@@ -3,8 +3,8 @@ ymaps.ready(init);
 function init() {
     var geolocation = ymaps.geolocation,
         myMap = new ymaps.Map('map', {
-            center: [55, 34],
-            zoom: 2
+            center: [59.93772, 30.313622],
+            zoom: 2,
         }, {
             searchControlProvider: 'yandex#search'
         });
@@ -12,7 +12,8 @@ function init() {
     // Сравним положение, вычисленное по ip пользователя и
     // положение, вычисленное средствами браузера.
     geolocation.get({
-        provider: 'yandex',
+        provider: "auto",
+        // provider: 'yandex',
         mapStateAutoApply: true
     }).then(function (result) {
         // Красным цветом пометим положение, вычисленное через ip.
@@ -24,6 +25,7 @@ function init() {
     });
 
     geolocation.get({
+
         provider: 'browser',
         mapStateAutoApply: true
     }).then(function (result) {
@@ -39,14 +41,12 @@ function init() {
         balloonContentHeader: "Офис в Испании",
         balloonContentBody: "Тут жарко, вино, и работать не хочется!",
 
-
     });
 
     myPlacemark1 = new ymaps.Placemark([7.88, 98,39], {
 
         balloonContentHeader: "Офис на Пхукете",
         balloonContentBody: "Тут еще жарче, вино тоже есть, и работать ну вообще не хочется!",
-
 
     });
 
@@ -55,7 +55,6 @@ function init() {
 
         balloonContentHeader: "Офис в Сибири",
         balloonContentBody: "Заберите меня на Пхукет",
-
 
     });
 
